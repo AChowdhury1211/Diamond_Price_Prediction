@@ -47,7 +47,8 @@ class DataTransformation:
             cat_pipeline = Pipeline(
                 steps=[
                     ("Imputer", SimpleImputer(strategy="most_frequent")),
-                    ("OrdinalEncoder", OrdinalEncoder(categories=[cut_categories, color_categories, clarity_categories])),
+                    ("OrdinalEncoder", OrdinalEncoder(categories=[
+                     cut_categories, color_categories, clarity_categories])),
                     ("Scaler", StandardScaler())
                 ]
             )
@@ -86,26 +87,26 @@ class DataTransformation:
 
             independent_features_test_df = test_df.drop(columns=drop_column, axis=1)
             target_feature_test_df = test_df[target_column]
-            
+
             independent_features_train_arr = preprocessor_obj.fit_transform(independent_features_train_df)
             independent_features_test_arr = preprocessor_obj.transform(independent_features_test_df)
-            
+
             logging.info("Preprocessing done on train and test dataframes")
-            
-            train_arr = np.c_[independent_features_train_arr, np.array(target_feature_train_df)]
-            test_arr = np.c_[independent_features_test_arr, np.array(target_feature_test_df)]
-            
+
+            train_arr = np.c_[independent_features_train_arr, np.array(target_feature_train_df)]  
+            test_arr = np.c_[independent_features_test_arr, np.array(target_feature_test_df)]  
+
             save_object(
-                file_path= self.data_transformation_config.preprocessor_obj_path ,
-                obj= preprocessor_obj
+                file_path=self.data_transformation_config.preprocessor_obj_path,
+                obj=preprocessor_obj
             )
 
-            return(
+            return (
                 train_arr,
                 test_arr,
                 self.data_transformation_config.preprocessor_obj_path
             )
-            
+
         except Exception as e:
             logging.info("Exception at data transformaion initiation")
             raise CustomException(e, sys)
