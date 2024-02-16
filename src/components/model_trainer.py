@@ -40,15 +40,16 @@ class Model_Trainer:
             Report = pd.DataFrame(model_report)
             logging.info("Model Report succesfully created")
             
-            metrics = ["mean_squared_error","mean_absolute_error","r2_percentage","roor_mean_squared_error"]
-            for m in range(len(metrics)):
-                for n in range(len(list(Report.iterrows()))):
-                    Best_score = Report.iloc[n].max()
-                    Best_Model = Report.columns[Report.eq(Best_score).any()][0]
-                    print(f"The winner is {Best_Model} with score of: {Best_score} in {metrics[n]}")     
+            metrics = ["mean_squared_error","mean_absolute_error","r2_percentage","root_mean_squared_error"]
+            for n in range(len(list(Report.iterrows()))):
+                
+                Best_score = Report.iloc[n].max()
+                Best_Model = Report.columns[Report.eq(Best_score).any()][0]
+                print(f"The winner is {Best_Model} with score of: {Best_score} in {metrics[n]}")     
             
-            Best_R2_Model = Report.columns(Report.iloc[2].max)
+            Best_R2_Model = Report.columns[Report.eq(Report.iloc[2].max()).any()][0]
             Saved_model = models[Best_R2_Model]
+            print(Best_R2_Model)
             
             logging.info(f"Best Model Found")
             

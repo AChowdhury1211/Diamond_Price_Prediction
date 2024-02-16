@@ -51,3 +51,11 @@ def Evaluate_Model(X_train,X_test,y_train, y_test, models):
     except Exception as e :
         logging.info("Exception occured during Model Evaluation in utils")
         raise CustomException(e,sys)
+    
+def load_object(file_path):
+    try:
+        with open(file_path, "rb") as file_load:
+            return pickle.load(file_load)
+    except Exception as e:
+        logging.info("Exception occured at loading object in utils")
+        raise CustomException(e,sys)
