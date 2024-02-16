@@ -13,10 +13,11 @@ import pandas as pd
 
 from src.utils import save_object
 
+from dataclasses import dataclass
 
+@dataclass
 class DataTransformationConfig:
-    def __init__(self,preprocessor_obj_path):
-        self.preprocessor_obj_path = os.path.join("artifacts", "preprocessor.pkl")
+    preprocessor_obj_path = os.path.join("artifacts", "preprocessor.pkl")
 
 
 class DataTransformation:
