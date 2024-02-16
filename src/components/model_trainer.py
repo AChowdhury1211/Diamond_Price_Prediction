@@ -11,7 +11,7 @@ from src.utils import save_object
 from src.utils import Evaluate_Model
 from dataclasses import dataclass
 import sys,os
-@dataclass
+@dataclass 
 class Model_Trainer_Config:
     model_trainer_path = os.path.join("artifacts", "model_trainer.pkl")
 class Model_Trainer:
@@ -33,7 +33,8 @@ class Model_Trainer:
                 "Ridge" : Ridge(),
                 "ElasticNet" : ElasticNet(),
                 "DecisionTreeRegressor" : DecisionTreeRegressor(),
-                "RandomForestRegressor" : RandomForestRegressor()
+                "RandomForestRegressor" : RandomForestRegressor(),
+                "KNearestNeighbours" : KNeighborsRegressor()
             }
             model_report:dict= Evaluate_Model(X_train,X_test,y_train, y_test, models)
             Report = pd.DataFrame(model_report)
