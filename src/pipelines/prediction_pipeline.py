@@ -59,3 +59,16 @@ class Custom_Data:
             return df
         except Exception as e:
             logging("Exception occured at dataframe creation")
+        
+    def to_dict(self):
+        return {
+            'carat': self.carat,
+            'depth': self.depth,
+            'table': self.table,
+            'x': self.x,
+            'y': self.y,
+            'z': self.z,
+            'cut': self.cut,
+            'color': self.color,
+            'clarity': self.clarity
+        }
