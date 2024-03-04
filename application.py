@@ -43,7 +43,7 @@ def prediction_value():
             logging.info(f"Data dictionary successfully created: {data_dict}")
             
     
-            uri = "mongodb+srv://achowdhury1211:IZoJWSHJpINCVUW1@cluster1.ihgavjm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1"
+            uri = "mongodb+srv://achowdhury1211:<password>@cluster1.ihgavjm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1"
             client = MongoClient(uri)
             db = client["Diamond_Information"]
             coll_name = db["Diamond"]
