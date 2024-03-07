@@ -27,8 +27,7 @@ class DataIngestion:
             df = pd.read_csv(os.path.join("notebooks/data", "gemstone.csv"))
             logging.info("Pandas DataFrame is getting generated")
 
-            os.makedirs(os.path.dirname(
-                self.data_ingestion_config.raw_data_path), exist_ok=True)
+            os.makedirs(os.path.dirname(self.data_ingestion_config.raw_data_path), exist_ok=True)
             df.to_csv(self.data_ingestion_config.raw_data_path, index=False)
             logging.info("Raw data is getting created")
 
@@ -48,5 +47,5 @@ class DataIngestion:
             )
 
         except Exception as e:
-            logging.info("Exception at Data Ingestion stage")
+            logging.error("Exception at Data Ingestion stage")
             raise CustomException(e, sys)

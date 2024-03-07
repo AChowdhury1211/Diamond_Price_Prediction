@@ -3,11 +3,10 @@ from src.exception import CustomException
 import os,sys
 from src.utils import load_object
 import pandas as pd
+from dataclasses import dataclass
 
+@dataclass
 class Predict_Pipeline:
-    def __init__(self):
-        pass
-    
     def predict(self,features):
         preprocessor_pickle_file_path = os.path.join("artifacts", "preprocessor.pkl")
         model_pickle_file_path = os.path.join("artifacts", "model_trainer.pkl")
